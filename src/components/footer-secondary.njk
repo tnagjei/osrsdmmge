@@ -1,0 +1,39 @@
+{% macro renderFooterSecondary(config) %}
+<footer class="border-t border-border/40 bg-midnight/80 backdrop-blur-xl">
+  <div class="mx-auto grid max-w-6xl gap-12 px-4 py-14 md:grid-cols-4 md:px-8">
+    <div class="space-y-4">
+      <p class="text-lg font-semibold text-fog">{{ config.brand.title }}</p>
+      {% for line in config.brand.lines %}
+      <p class="text-sm text-secondary">{{ line.content | safe }}</p>
+      {% endfor %}
+    </div>
+    <div>
+      <h3 class="eyebrow text-fog/60">{{ config.navigation.title }}</h3>
+      <ul class="mt-5 space-y-2 text-sm text-fog/70">
+        {% for link in config.navigation.links %}
+        <li><a href="{{ link.href }}" class="transition hover:text-fog">{{ link.label }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div>
+      <h3 class="eyebrow text-fog/60">{{ config.legal.title }}</h3>
+      <ul class="mt-5 space-y-2 text-sm text-fog/70">
+        {% for link in config.legal.links %}
+        <li><a href="{{ link.href }}" class="transition hover:text-fog">{{ link.label }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div>
+      <h3 class="eyebrow text-fog/60">{{ config.languages.title }}</h3>
+      <ul class="mt-5 space-y-2 text-sm text-fog/70">
+        {% for lang in config.languages.items %}
+        <li><a href="{{ lang.href }}" class="transition hover:text-fog">{{ lang.label }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-border/40 px-4 py-6 text-center text-xs text-fog/50 md:px-8">
+    {{ config.bottomNote }}
+  </div>
+</footer>
+{% endmacro %}

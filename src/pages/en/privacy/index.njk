@@ -1,0 +1,67 @@
+{% from "header.njk" import renderHeader %}
+{% from "footer-home.njk" import renderFooterHome %}
+{% from "footer-secondary.njk" import renderFooterSecondary %}
+
+<!DOCTYPE html>
+<html lang="{{ page.locale }}" data-locale="{{ page.locale }}"{% if page.dir %} dir="{{ page.dir }}"{% endif %}>
+  <head>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SN7RB53V27"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-SN7RB53V27');
+    </script>
+  <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Small Font Privacy for small font product teams Worldwide</title>
+    <meta name="description" content="Review how our small font platform keeps work private: small font processing happens client-side without tracking, safeguarding compliance for product teams." />
+    <meta name="keywords" content="" />
+    <link rel="canonical" href="https://osrsdmmge.online/en/privacy/" />
+    <link rel="alternate" href="https://osrsdmmge.online/fi/privacy/" hreflang="fi" />
+    <link rel="alternate" href="https://osrsdmmge.online/sv/privacy/" hreflang="sv" />
+    <link rel="alternate" href="https://osrsdmmge.online/no/privacy/" hreflang="no" />
+    <link rel="alternate" href="https://osrsdmmge.online/en/privacy/" hreflang="x-default" />
+    <link rel="icon" type="image/svg+xml" href="/assets/small-font-icon.svg" />
+    <link rel="stylesheet" href="/assets/site.css" />
+  </head>
+  <body class="bg-midnight text-fog antialiased">
+    {{ languageAlert | safe }}
+    {{ renderHeader(header) }}
+    <main class="mx-auto max-w-6xl px-4 pb-24 pt-12 md:px-8">
+      <section class="space-y-8">
+        <h1 class="section-title">Small font privacy commitments for small font teams</h1>
+        <p class="text-secondary">At Small Font Online, your privacy is our top priority. This policy explains how we handle data (or rather, how we don't) when you use our platform. Last updated: January 1, 2025. We comply with GDPR, CCPA, and emerging 2025 privacy standards. No personal data is collected, stored, or shared – everything happens in your browser.</p>
+        <div class="space-y-6">
+          <h2 class="text-2xl font-semibold text-white">1. Data Collection</h2>
+          <p class="text-secondary">We do not collect any personal information. The small font generator runs entirely client-side using JavaScript and Web APIs. Your sample text, font settings, and previews are processed locally and never transmitted to our servers. No logs, no IP addresses, no user IDs.</p>
+          <ul class="mt-4 space-y-2 text-secondary">
+            <li>• <strong>No cookies or tracking:</strong> Our site uses no cookies, pixels, or third-party trackers. Analytics are disabled by default.</li>
+            <li>• <strong>Browser storage:</strong> Temporary data (e.g., preview text) is held in memory and cleared on page unload. No localStorage or IndexedDB usage.</li>
+            <li>• <strong>Clipboard interactions:</strong> The CSS copy feature uses the browser's Clipboard API, which requires user permission but sends nothing to us.</li>
+          </ul>
+          <h2 class="text-2xl font-semibold text-white">2. Third-Party Services</h2>
+          <p class="text-secondary">Our platform is static and self-hosted. No external services are used for core functionality:</p>
+          <ul class="mt-4 space-y-2 text-secondary">
+            <li>• <strong>Ads:</strong> Placeholder spaces are reserved for future partners, but no ad networks are integrated. Ads will be privacy-friendly (no targeting).</li>
+            <li>• <strong>Social links:</strong> Telegram and Discord links open in new tabs; we don't track clicks.</li>
+            <li>• <strong>Fonts/CSS:</strong> Tailwind and Inter fonts are loaded from CDNs with no analytics (e.g., unpkg.com).</li>
+          </ul>
+          <h2 class="text-2xl font-semibold text-white">3. Children's Privacy</h2>
+          <p class="text-secondary">Our site is not directed at children under 13. We do not knowingly collect data from minors. If you're a parent and believe your child has interacted with our tool, contact us immediately.</p>
+          <h2 class="text-2xl font-semibold text-white">4. Data Security</h2>
+          <p class="text-secondary">Since no data is collected, there's nothing to secure on our end. Your browser handles all processing securely. We recommend using HTTPS when integrating our CSS exports into your projects. Site hosted on privacy-focused providers with no logs.</p>
+          <h2 class="text-2xl font-semibold text-white">5. Changes to This Policy</h2>
+          <p class="text-secondary">We may update this policy to reflect platform changes. Significant updates will be announced via blog or Discord. Continued use constitutes acceptance.</p>
+          <h2 class="text-2xl font-semibold text-white">6. Contact Us</h2>
+          <p class="text-secondary">Questions about privacy? Email tangjei414@gmail.com or join our Discord. We're committed to transparency and will respond within 48 hours.</p>
+        </div>
+        <p class="text-center text-sm text-secondary">Your trust is our commitment. Small Font Online – Privacy by design.</p>
+      </section>
+    </main>
+    {{ renderFooterSecondary(footer) }}
+  </body>
+</html>

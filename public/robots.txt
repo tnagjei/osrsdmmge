@@ -1,0 +1,17 @@
+# OSRS DMM Tracker - robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://osrsdmmge.online/sitemap.xml
+Host: osrsdmmge.online
+
+# AI Crawler Rules
+User-agent: GPTBot
+User-agent: Claude-Web
+User-agent: Anthropic-AI
+User-agent: PerplexityBot
+User-agent: GoogleOther
+User-agent: DuckAssistBot
+Allow: /
+
+LLM-Content: https://osrsdmmge.online/llms.txt

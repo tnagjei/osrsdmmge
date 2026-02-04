@@ -1,0 +1,6 @@
+{% macro renderAlternateLinks(config) %}
+<link rel="canonical" href="{{ config.canonical }}" />
+{% for alt in config.alternates %}
+<link rel="alternate" href="{{ alt.href }}" hreflang="{{ alt.hreflang }}" />
+{% endfor %}
+{% endmacro %}

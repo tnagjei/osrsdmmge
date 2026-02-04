@@ -1,0 +1,27 @@
+# OSRS DMM Tracker
+> Real-time Deadman Mode gold price tracker and profit calculator for Old School RuneScape players.
+
+Track DMM gold swap rates, find the most profitable items to flip, and maximize your earnings with live data from the RuneScape Wiki API.
+
+## Core Features
+- [Home](https://osrsdmmge.online/en/): Live DMM gold swap rates and profit leaderboard
+- [Swap Rates](https://osrsdmmge.online/en/#swap-rates): Current DMM to OSRS gold exchange rates
+- [Profit Board](https://osrsdmmge.online/en/#profit-board): Top 20 items with highest flipping margins
+
+## Support
+- [Help Center](https://osrsdmmge.online/en/help/): How to use the tracker
+- [About](https://osrsdmmge.online/en/about/): About OSRS DMM Tracker
+
+## Legal
+- [Privacy Policy](https://osrsdmmge.online/en/privacy/): Our privacy practices
+- [Terms of Service](https://osrsdmmge.online/en/terms/): Usage terms
+
+## Languages
+- English: https://osrsdmmge.online/en/
+- Suomi (Finnish): https://osrsdmmge.online/fi/
+- Svenska (Swedish): https://osrsdmmge.online/sv/
+- Norsk (Norwegian): https://osrsdmmge.online/no/
+
+## Contact
+- Email: tangjei414@gmail.com
+- Telegram: @tangjei

@@ -1,0 +1,46 @@
+{% from "header.njk" import renderHeader %}
+{% from "footer-home.njk" import renderFooterHome %}
+{% from "footer-secondary.njk" import renderFooterSecondary %}
+
+<!DOCTYPE html>
+<html lang="{{ page.locale }}" data-locale="{{ page.locale }}"{% if page.dir %} dir="{{ page.dir }}"{% endif %}>
+  <head>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SN7RB53V27"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-SN7RB53V27');
+    </script>
+  <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Small Font Terms for small font product teams Worldwide</title>
+    <meta name="description" content="Read the small font terms outlining fair use, small font asset licensing, and privacy-first expectations so product teams can collaborate with confidence." />
+    <meta name="keywords" content="" />
+    <link rel="canonical" href="https://osrsdmmge.online/en/terms/" />
+    <link rel="stylesheet" href="/assets/site.css" />
+    <link rel="icon" type="image/svg+xml" href="/assets/small-font-icon.svg" />
+  </head>
+  <body class="bg-midnight text-fog antialiased">
+    {{ languageAlert | safe }}
+    {{ renderHeader(header) }}
+    <main class="mx-auto max-w-4xl px-4 pb-24 pt-12 md:px-8">
+      <section class="space-y-8">
+        <span class="badge">Terms</span>
+        <h1 class="section-title">Small font terms of use for small font teams</h1>
+        <p class="text-secondary">Last updated: January 1, 2025. These terms outline the acceptable use of the small font online toolset, including the generator, exported snippets, and supporting documentation.</p>
+        <ol class="space-y-4 text-secondary">
+          <li><strong class="text-white">License.</strong> You may use the generated CSS snippets and guides in commercial and personal projects. Attribution is appreciated but not required.</li>
+          <li><strong class="text-white">Account requirements.</strong> The MVP operates without login. Discord or Telegram participation is optional and governed by their respective policies.</li>
+          <li><strong class="text-white">Acceptable use.</strong> Do not resell the hosted service, attempt to reverse engineer unpublished assets, or misrepresent affiliation with the small font team.</li>
+          <li><strong class="text-white">Content updates.</strong> We may revise copy, presets, or policies. Continued use after updates constitutes acceptance.</li>
+          <li><strong class="text-white">Contact.</strong> Questions about these terms? Email <a class="text-accent" href="mailto:tangjei414@gmail.com">tangjei414@gmail.com</a>.</li>
+        </ol>
+      </section>
+    </main>
+    {{ renderFooterSecondary(footer) }}
+  </body>
+</html>

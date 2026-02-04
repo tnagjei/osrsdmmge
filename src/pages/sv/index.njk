@@ -1,0 +1,520 @@
+{% from "header.njk" import renderHeader %}
+{% from "footer-home.njk" import renderFooterHome %}
+{% from "footer-secondary.njk" import renderFooterSecondary %}
+
+<!DOCTYPE html>
+<html lang="{{ page.locale }}" data-locale="{{ page.locale }}"{% if page.dir %} dir="{{ page.dir }}"{% endif %}>
+  <head>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SN7RB53V27"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-SN7RB53V27');
+    </script>
+  <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OSRS Deadman Mode (DMM) Gold Price Tracker | Real-time Profit Calculator</title>
+    <meta name="description" content="Track OSRS Deadman Mode gold prices and swap rates in real-time. Find the most profitable items to flip with our live margin calculator powered by RuneScape Wiki API." />
+    <meta name="keywords" content="OSRS DMM, Deadman Mode, gold price, swap rate, profit tracker, RuneScape, flipping, margin calculator" />
+    <link rel="canonical" href="https://osrsdmmge.online/en/" />
+    <link rel="alternate" href="https://osrsdmmge.online/fi/" hreflang="fi" />
+    <link rel="alternate" href="https://osrsdmmge.online/sv/" hreflang="sv" />
+    <link rel="alternate" href="https://osrsdmmge.online/no/" hreflang="no" />
+    <link rel="alternate" href="https://osrsdmmge.online/en/" hreflang="x-default" />
+    <link rel="icon" type="image/svg+xml" href="/assets/osrs-icon.svg" />
+    <link rel="stylesheet" href="/assets/site.css" />
+    <style>
+      /* OSRS Theme Overrides */
+      :root {
+        --osrs-dark: #1a1a1a;
+        --osrs-darker: #0d0d0d;
+        --osrs-gold: #ffc107;
+        --osrs-gold-dark: #b8860b;
+        --osrs-orange: #ff9800;
+        --osrs-green: #4caf50;
+        --osrs-red: #f44336;
+        --osrs-brown: #3e2723;
+        --osrs-border: #4a4a4a;
+      }
+      
+      body.osrs-theme {
+        background: linear-gradient(180deg, var(--osrs-darker) 0%, var(--osrs-dark) 100%);
+        color: #e0e0e0;
+      }
+      
+      .osrs-card {
+        background: linear-gradient(145deg, #2a2a2a 0%, #1f1f1f 100%);
+        border: 2px solid var(--osrs-border);
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      }
+      
+      .osrs-title {
+        color: var(--osrs-gold);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        font-weight: 700;
+      }
+      
+      .osrs-gold-text {
+        color: var(--osrs-gold);
+      }
+      
+      .osrs-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+      }
+      
+      .osrs-table thead {
+        background: linear-gradient(180deg, #3a3a3a 0%, #2a2a2a 100%);
+      }
+      
+      .osrs-table th {
+        padding: 12px 16px;
+        text-align: left;
+        color: var(--osrs-gold);
+        font-weight: 600;
+        border-bottom: 2px solid var(--osrs-gold-dark);
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+      }
+      
+      .osrs-table tbody tr {
+        transition: background-color 0.2s ease;
+      }
+      
+      .osrs-table tbody tr:hover {
+        background-color: rgba(255, 193, 7, 0.08);
+      }
+      
+      .osrs-table tbody tr:nth-child(even) {
+        background-color: rgba(255, 255, 255, 0.02);
+      }
+      
+      .osrs-table td {
+        padding: 12px 16px;
+        border-bottom: 1px solid #333;
+        font-size: 0.875rem;
+      }
+      
+      .price-positive {
+        color: var(--osrs-green);
+        font-weight: 600;
+      }
+      
+      .price-negative {
+        color: var(--osrs-red);
+        font-weight: 600;
+      }
+      
+      .loading-spinner {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #333;
+        border-top-color: var(--osrs-gold);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+      
+      .swap-rate-badge {
+        background: linear-gradient(135deg, var(--osrs-gold-dark) 0%, var(--osrs-gold) 50%, var(--osrs-orange) 100%);
+        color: #000;
+        font-weight: 700;
+        padding: 8px 20px;
+        border-radius: 6px;
+        display: inline-block;
+        font-size: 1.25rem;
+        box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+      }
+      
+      .info-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        color: #aaa;
+      }
+      
+      .pulse-dot {
+        width: 8px;
+        height: 8px;
+        background: var(--osrs-green);
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+      }
+      
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+      }
+    </style>
+  </head>
+  <body class="osrs-theme antialiased">
+    {{ languageAlert | safe }}
+    {{ renderHeader(header) }}
+    <main class="mx-auto max-w-6xl px-4 pb-24 pt-12 md:px-8">
+      
+      <!-- Hero Section -->
+      <section id="hero" class="text-center mb-12">
+        <h1 class="osrs-title text-4xl sm:text-5xl md:text-6xl mb-4">
+          OSRS Deadman Mode
+          <br>
+          <span class="text-3xl sm:text-4xl">Price Tracker</span>
+        </h1>
+        <p class="text-gray-400 max-w-2xl mx-auto text-lg">
+          Real-time DMM gold swap rates and profit opportunities from the RuneScape Wiki API
+        </p>
+      </section>
+
+      <!-- Swap Rate Dashboard Card -->
+      <section id="swap-rates" class="osrs-card p-6 md:p-8 mb-10">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+          <!-- Left: Title and Description -->
+          <div class="flex items-start gap-4">
+            <div style="width: 48px; height: 48px; min-width: 48px; background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+              <svg style="width: 24px; height: 24px;" fill="#000" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </div>
+            <div>
+              <h2 class="osrs-gold-text text-2xl font-bold mb-1">DMM Swap Rates</h2>
+              <p class="text-gray-400 text-sm">Current exchange rate between DMM and OSRS gold</p>
+            </div>
+          </div>
+
+          <!-- Right: Rate Display -->
+          <div class="flex flex-col items-center lg:items-end gap-4">
+            <!-- Main Rate Badge -->
+            <div style="background: linear-gradient(135deg, #b8860b 0%, #ffc107 40%, #ff9800 100%); padding: 16px 32px; border-radius: 12px; box-shadow: 0 8px 32px rgba(255, 193, 7, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);">
+              <div style="font-size: 2rem; font-weight: 800; color: #000; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3); letter-spacing: -0.02em;">
+                1M DMM <span style="opacity: 0.7;">=</span> 55M OSRS
+              </div>
+            </div>
+
+            <!-- Status Badges Row -->
+            <div class="flex flex-wrap justify-center lg:justify-end gap-3">
+              <span class="info-badge" style="background: rgba(76, 175, 80, 0.15); border: 1px solid rgba(76, 175, 80, 0.3);">
+                <span class="pulse-dot"></span>
+                <span style="color: #4caf50;">Live Rate</span>
+              </span>
+              <span class="info-badge" style="background: rgba(255, 193, 7, 0.1); border: 1px solid rgba(255, 193, 7, 0.3);">
+                <svg style="width: 14px; height: 14px;" fill="#ffc107" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                </svg>
+                <span style="color: #ffc107;">Source: Discord</span>
+              </span>
+            </div>
+
+            <!-- Last Updated -->
+            <p class="text-gray-500 text-xs" id="last-updated">
+              Last updated: Loading...
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Profit Leaderboard Section -->
+      <section id="profit-board" class="osrs-card p-6 md:p-8">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+          <div>
+            <h2 class="osrs-gold-text text-2xl font-bold flex items-center gap-3">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/>
+              </svg>
+              Real-time Profit Leaderboard
+            </h2>
+            <p class="text-gray-400 text-sm mt-1">Top 20 items with highest flipping margins (updated every minute)</p>
+          </div>
+          <button 
+            id="refresh-btn" 
+            class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-600 to-amber-500 text-black font-semibold rounded-lg hover:from-amber-500 hover:to-amber-400 transition-all duration-200"
+            onclick="fetchData()"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+            </svg>
+            Refresh
+          </button>
+        </div>
+
+        <!-- Filter Info -->
+        <div class="flex flex-wrap gap-3 mb-6 text-sm">
+          <span class="info-badge bg-amber-500/10 text-amber-400 border border-amber-500/30">
+            Margin &gt; 50,000 GP
+          </span>
+          <span class="info-badge bg-green-500/10 text-green-400 border border-green-500/30">
+            Traded in last 1 hour
+          </span>
+          <span class="info-badge bg-blue-500/10 text-blue-400 border border-blue-500/30">
+            Sorted by profit
+          </span>
+        </div>
+
+        <!-- Data Table -->
+        <div class="overflow-x-auto -mx-6 md:-mx-8 px-6 md:px-8">
+          <table class="osrs-table min-w-full">
+            <thead>
+              <tr>
+                <th class="rounded-tl-lg">#</th>
+                <th>Item</th>
+                <th>Buy Price (Low)</th>
+                <th>Sell Price (High)</th>
+                <th class="rounded-tr-lg">Margin</th>
+              </tr>
+            </thead>
+            <tbody id="profit-tbody">
+              <tr>
+                <td colspan="5" class="text-center py-12">
+                  <div class="flex flex-col items-center gap-4">
+                    <div class="loading-spinner"></div>
+                    <span class="text-gray-400">Loading data from Wiki...</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Status Footer -->
+        <div class="mt-6 pt-6 border-t border-gray-700 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm text-gray-500">
+          <div id="data-status">
+            <span class="flex items-center gap-2">
+              <span class="pulse-dot"></span>
+              Fetching live data...
+            </span>
+          </div>
+          <div>
+            Data source: <a href="https://prices.runescape.wiki/" target="_blank" rel="noopener" class="text-amber-400 hover:underline">RuneScape Wiki API</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Info Section -->
+      <section id="info" class="mt-12 grid gap-6 md:grid-cols-3">
+        <div class="osrs-card p-6">
+          <h3 class="osrs-gold-text text-lg font-bold mb-3">What is DMM?</h3>
+          <p class="text-gray-400 text-sm">
+            Deadman Mode (DMM) is a seasonal, high-stakes PvP mode in Old School RuneScape where players can attack each other almost anywhere and lose items upon death.
+          </p>
+        </div>
+        <div class="osrs-card p-6">
+          <h3 class="osrs-gold-text text-lg font-bold mb-3">How Margins Work</h3>
+          <p class="text-gray-400 text-sm">
+            The margin is the difference between buy (low) and sell (high) prices. Higher margins mean more potential profit when flipping items in the Grand Exchange.
+          </p>
+        </div>
+        <div class="osrs-card p-6">
+          <h3 class="osrs-gold-text text-lg font-bold mb-3">Real-time Data</h3>
+          <p class="text-gray-400 text-sm">
+            Our tracker fetches live price data directly from the official RuneScape Wiki API, ensuring you always have the most up-to-date market information.
+          </p>
+        </div>
+      </section>
+
+    </main>
+    {{ renderFooterHome(footer) }}
+
+    <script>
+      // OSRS DMM Price Tracker - MVP v1.0
+      // API Endpoints
+      const PRICES_API = 'https://prices.runescape.wiki/api/v1/dmm/latest';
+      const MAPPING_API = 'https://prices.runescape.wiki/api/v1/osrs/mapping';
+      const USER_AGENT = 'DMM_Tracker_MVP/1.0';
+
+      // DOM Elements
+      const profitTbody = document.getElementById('profit-tbody');
+      const dataStatus = document.getElementById('data-status');
+      const lastUpdated = document.getElementById('last-updated');
+      const refreshBtn = document.getElementById('refresh-btn');
+
+      // Format number with commas
+      function formatNumber(num) {
+        if (num === undefined || num === null) return '-';
+        return num.toLocaleString('en-US');
+      }
+
+      // Format GP (gold pieces) with color
+      function formatGP(num, isMargin = false) {
+        if (num === undefined || num === null) return '<span class="text-gray-500">-</span>';
+        const formatted = formatNumber(num);
+        if (isMargin) {
+          return `<span class="price-positive">${formatted} GP</span>`;
+        }
+        return `${formatted} GP`;
+      }
+
+      // Update last updated timestamp
+      function updateTimestamp() {
+        const now = new Date();
+        lastUpdated.textContent = `Last updated: ${now.toLocaleTimeString()}`;
+      }
+
+      // Render loading state
+      function showLoading() {
+        profitTbody.innerHTML = `
+          <tr>
+            <td colspan="5" class="text-center py-12">
+              <div class="flex flex-col items-center gap-4">
+                <div class="loading-spinner"></div>
+                <span class="text-gray-400">Loading data from Wiki...</span>
+              </div>
+            </td>
+          </tr>
+        `;
+        dataStatus.innerHTML = '<span class="flex items-center gap-2"><span class="pulse-dot"></span>Fetching live data...</span>';
+      }
+
+      // Render error state
+      function showError(message) {
+        profitTbody.innerHTML = `
+          <tr>
+            <td colspan="5" class="text-center py-12">
+              <div class="flex flex-col items-center gap-4 text-red-400">
+                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span>${message}</span>
+                <button onclick="fetchData()" class="mt-2 px-4 py-2 bg-amber-600 text-black rounded-lg hover:bg-amber-500">
+                  Try Again
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+        dataStatus.innerHTML = '<span class="text-red-400">Failed to load data</span>';
+      }
+
+      // Render table data
+      function renderTable(items) {
+        if (items.length === 0) {
+          profitTbody.innerHTML = `
+            <tr>
+              <td colspan="5" class="text-center py-12 text-gray-400">
+                No items found matching the filter criteria (Margin &gt; 50,000 GP, traded in last hour)
+              </td>
+            </tr>
+          `;
+          dataStatus.innerHTML = '<span class="text-amber-400">No matching items found</span>';
+          return;
+        }
+
+        profitTbody.innerHTML = items.map((item, index) => `
+          <tr>
+            <td class="text-gray-500 font-mono">${index + 1}</td>
+            <td class="font-medium text-white">${item.name}</td>
+            <td>${formatGP(item.low)}</td>
+            <td>${formatGP(item.high)}</td>
+            <td>${formatGP(item.margin, true)}</td>
+          </tr>
+        `).join('');
+
+        dataStatus.innerHTML = `<span class="text-green-400">✓ Showing ${items.length} items with highest profit margins</span>`;
+      }
+
+      // Fetch and process data
+      async function fetchData() {
+        showLoading();
+        refreshBtn.disabled = true;
+        refreshBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+        try {
+          // Fetch both APIs in parallel
+          const [pricesRes, mappingRes] = await Promise.all([
+            fetch(PRICES_API, {
+              headers: { 'User-Agent': USER_AGENT }
+            }),
+            fetch(MAPPING_API, {
+              headers: { 'User-Agent': USER_AGENT }
+            })
+          ]);
+
+          if (!pricesRes.ok || !mappingRes.ok) {
+            throw new Error('API request failed');
+          }
+
+          const pricesData = await pricesRes.json();
+          const mappingData = await mappingRes.json();
+
+          // Create ID to name mapping
+          const idToName = {};
+          mappingData.forEach(item => {
+            idToName[item.id] = item.name;
+          });
+
+          // Current timestamp for 1-hour filter
+          const oneHourAgo = Math.floor(Date.now() / 1000) - 3600;
+
+          // Process prices data
+          const items = [];
+          const pricesObj = pricesData.data || pricesData;
+
+          for (const [id, priceInfo] of Object.entries(pricesObj)) {
+            const name = idToName[id];
+            if (!name) continue;
+
+            const high = priceInfo.high;
+            const low = priceInfo.low;
+            const highTime = priceInfo.highTime;
+            const lowTime = priceInfo.lowTime;
+
+            // Skip if missing price data
+            if (!high || !low) continue;
+
+            // Calculate margin
+            const margin = high - low;
+
+            // Filter: margin > 50,000 AND traded in last hour
+            if (margin > 50000) {
+              const recentlyTraded = (highTime && highTime >= oneHourAgo) || (lowTime && lowTime >= oneHourAgo);
+              if (recentlyTraded) {
+                items.push({
+                  id,
+                  name,
+                  high,
+                  low,
+                  margin
+                });
+              }
+            }
+          }
+
+          // Sort by margin (descending) and take top 20
+          items.sort((a, b) => b.margin - a.margin);
+          const top20 = items.slice(0, 20);
+
+          renderTable(top20);
+          updateTimestamp();
+
+        } catch (error) {
+          console.error('Error fetching data:', error);
+          showError('Failed to fetch data from RuneScape Wiki API. Please try again later.');
+        } finally {
+          refreshBtn.disabled = false;
+          refreshBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        }
+      }
+
+      // Initial timestamp
+      updateTimestamp();
+
+      // Fetch data on page load
+      fetchData();
+
+      // Auto-refresh every 5 minutes
+      setInterval(fetchData, 5 * 60 * 1000);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+{% macro renderHeader(config) %}
+<header class="sticky top-0 z-40 border-b border-border/40 bg-midnight/80 backdrop-blur-xl">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-5 md:px-8">
+    <a href="{{ config.homeHref }}" class="flex items-center gap-3 text-fog">
+      <span style="background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%); color: #000; font-weight: 700;" class="inline-flex h-9 w-9 items-center justify-center rounded-lg text-sm">⚔️</span>
+      <span class="text-base font-semibold md:text-lg" style="color: #ffc107;">DMM Tracker</span>
+    </a>
+    <nav class="hidden items-center gap-6 text-sm font-medium text-fog/70 lg:flex">
+      {% for item in config.navItems %}
+      <a href="{{ item.href }}" class="transition hover:text-fog">{{ item.label }}</a>
+      {% endfor %}
+    </nav>
+    <div class="flex items-center gap-3">
+      {% if config.cta.telegram %}
+      <a href="{{ config.cta.telegram.href }}" class="hidden text-sm font-medium text-fog/70 transition hover:text-fog md:inline">{{ config.cta.telegram.label }}</a>
+      {% endif %}
+      {% if config.cta.discord %}
+      <a href="{{ config.cta.discord.href }}" class="btn shadow-subtle">{{ config.cta.discord.label }}</a>
+      {% endif %}
+    </div>
+  </div>
+</header>
+{% endmacro %}

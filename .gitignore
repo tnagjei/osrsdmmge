@@ -1,0 +1,53 @@
+# Build directories
+/public/*
+!/public/_headers
+!/public/assets/
+!/public/assets/**
+!/public/sitemap.xml
+!/public/robots.txt
+!/public/llms.txt
+!/public/ads.txt
+/src/generated/
+/dist/
+
+# Dependency directories
+/node_modules/
+
+# Environment files
+.env
+.env.local
+.env.production
+.env.staging
+
+# Editor configs
+/.idea/
+/.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temp files
+*.tmp
+*.temp
+
+# Docs intentionally excluded
+/prompt.md
+/~.claudeCLAUDE.md
+CODEX.md
+docs/site-architecture.md
+AGENTS.md
+docs/fix-plan.md
+
+# Hosting configs
+.wrangler/
+.vercel/
+.netlify/
+/*.png
