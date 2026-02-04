@@ -17,72 +17,120 @@
     </script>
   <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Small Font Help Guide for small font workflows Worldwide</title>
-    <meta name="description" content="Get answers for small font workflows, from generator tips to small font accessibility checks, keeping product teams aligned with privacy-first standards." />
-    <meta name="keywords" content="" />
-    <link rel="canonical" href="https://osrsdmmge.online/en/help/" />
+    <title>OSRS DMM Tracker Help | How to Use the Gold Price Tool</title>
+    <meta name="description" content="Learn how to use OSRS DMM Tracker to find profitable items, understand swap rates, and maximize your gold in Deadman Mode. Step-by-step guides and FAQs." />
+    <meta name="keywords" content="OSRS DMM help, how to flip, Deadman Mode guide, gold making" />
+    <link rel="canonical" href="https://osrsdmmge.online/sv/help/" />
+    <link rel="alternate" href="https://osrsdmmge.online/en/help/" hreflang="en" />
     <link rel="alternate" href="https://osrsdmmge.online/fi/help/" hreflang="fi" />
     <link rel="alternate" href="https://osrsdmmge.online/sv/help/" hreflang="sv" />
     <link rel="alternate" href="https://osrsdmmge.online/no/help/" hreflang="no" />
     <link rel="alternate" href="https://osrsdmmge.online/en/help/" hreflang="x-default" />
-    <link rel="icon" type="image/svg+xml" href="/assets/small-font-icon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/assets/osrs-icon.svg" />
     <link rel="stylesheet" href="/assets/site.css" />
+    <style>
+      .osrs-card {
+        background: linear-gradient(145deg, #2a2a2a 0%, #1f1f1f 100%);
+        border: 2px solid #4a4a4a;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      }
+      .osrs-gold-text { color: #ffc107; }
+      details summary { cursor: pointer; }
+      details[open] summary { margin-bottom: 12px; }
+    </style>
   </head>
-  <body class="bg-midnight text-fog antialiased">
+  <body class="bg-midnight text-fog antialiased" style="background: linear-gradient(180deg, #0d0d0d 0%, #1a1a1a 100%);">
     {{ languageAlert | safe }}
     {{ renderHeader(header) }}
-    <main class="mx-auto max-w-6xl px-4 pb-24 pt-12 md:px-8">
+    <main class="mx-auto max-w-4xl px-4 pb-24 pt-12 md:px-8">
       <section class="space-y-8">
-        <h1 class="section-title">Small font help center for small font workflows</h1>
-        <p class="text-secondary">Welcome to the small font help center. Here, you'll find step-by-step instructions for common tasks, error troubleshooting, and best practices for using small font tools. Whether you're adjusting font sizes, exporting CSS for your design system, or optimizing for accessibility, these guides ensure your small font implementations are pixel-perfect and compliant with 2025 standards.</p>
-        <div class="space-y-6">
-          <details class="panel">
-            <summary class="text-lg font-semibold text-white">How to generate small font previews</summary>
-            <p class="mt-3 text-secondary">
-              1. Enter your sample text in the textarea on the home page.<br>
-              2. Adjust the font size slider (8-18px range for small font).<br>
-              3. Preview the output in the live area below.<br>
-              4. Copy the generated CSS snippet for your project.<br>
-              <strong>Tip:</strong> For best readability, keep line-height between 1.2-1.5 and test on mobile devices.
-            </p>
+        <h1 class="section-title osrs-gold-text">Help Center</h1>
+        <p class="text-gray-400">Welcome to the OSRS DMM Tracker Help Center. Find answers to common questions and learn how to maximize your gold-making potential in Deadman Mode.</p>
+        
+        <div class="space-y-4">
+          <details class="osrs-card p-6" open>
+            <summary class="text-lg font-semibold osrs-gold-text">How do I use the Profit Leaderboard?</summary>
+            <div class="text-gray-400 space-y-2">
+              <p>The Profit Leaderboard shows the top 20 items with the highest profit margins in DMM. Here's how to use it:</p>
+              <ol class="list-decimal pl-5 space-y-1">
+                <li>Look at the "Buy Price (Low)" column - this is the price to place your buy offer</li>
+                <li>Look at the "Sell Price (High)" column - this is the price to place your sell offer</li>
+                <li>The "Margin" column shows your potential profit per item</li>
+                <li>Click "Refresh" to get the latest prices</li>
+              </ol>
+            </div>
           </details>
-          <details class="panel">
-            <summary class="text-lg font-semibold text-white">Troubleshooting common errors</summary>
-            <p class="mt-3 text-secondary">
-              <strong>Preview not updating:</strong> Ensure JavaScript is enabled in your browser. Refresh the page and try again.<br>
-              <strong>CSS copy fails:</strong> This is usually a clipboard permission issue. Manually select and copy the code from the pre tag.<br>
-              <strong>Styles not applying:</strong> Verify that /assets/site.css is loaded in your HTML head. Run 'npm run tailwind:build' if using locally.<br>
-              <strong>Language alert not showing:</strong> Check browser language settings or clear cache.
-            </p>
+
+          <details class="osrs-card p-6">
+            <summary class="text-lg font-semibold osrs-gold-text">What do the swap rates mean?</summary>
+            <div class="text-gray-400 space-y-2">
+              <p>The swap rate (e.g., "1M DMM = 55M OSRS") shows the current exchange rate between Deadman Mode gold and regular OSRS gold.</p>
+              <p>This is useful if you want to understand the real-world value of your DMM earnings or if you're considering swapping gold between game modes.</p>
+            </div>
           </details>
-          <details class="panel">
-            <summary class="text-lg font-semibold text-white">Exporting for design systems</summary>
-            <p class="mt-3 text-secondary">
-              1. Customize your small font settings (size, line-height).<br>
-              2. Copy the CSS snippet.<br>
-              3. For Figma, use the exported values to create text styles.<br>
-              4. Integrate JSON tokens into your design system config for team consistency.<br>
-              <strong>Pro Tip:</strong> Use the generated letter-spacing (0.02em) for better small font kerning on high-DPI screens.
-            </p>
+
+          <details class="osrs-card p-6">
+            <summary class="text-lg font-semibold osrs-gold-text">How do I flip items for profit?</summary>
+            <div class="text-gray-400 space-y-2">
+              <p>Flipping is the process of buying items low and selling them high. Here's a basic guide:</p>
+              <ol class="list-decimal pl-5 space-y-1">
+                <li>Find an item with a good margin on our leaderboard (higher = better)</li>
+                <li>Go to the Grand Exchange in-game</li>
+                <li>Place a buy offer at or slightly above the "Low" price</li>
+                <li>Once bought, place a sell offer at or slightly below the "High" price</li>
+                <li>Wait for your offer to complete - the difference is your profit!</li>
+              </ol>
+              <p class="mt-3"><strong class="text-amber-400">Tip:</strong> Start with items that have high trading volume for faster sales.</p>
+            </div>
           </details>
-          <details class="panel">
-            <summary class="text-lg font-semibold text-white">Accessibility and small font best practices</summary>
-            <p class="mt-3 text-secondary">
-              - Always ensure contrast ratios meet WCAG 2.1 AA (4.5:1 for normal text).<br>
-              - Test small font on real devices, not just simulators.<br>
-              - For multilingual, consider RTL support for Arabic and font fallback for CJK languages.<br>
-              - Avoid small font for critical information like error messages or legal text.<br>
-              <strong>Resources:</strong> Check our blog for case studies on small font in wearables and automotive UIs.
-            </p>
+
+          <details class="osrs-card p-6">
+            <summary class="text-lg font-semibold osrs-gold-text">Why are some items filtered out?</summary>
+            <div class="text-gray-400 space-y-2">
+              <p>We automatically filter items to show only the most profitable opportunities:</p>
+              <ul class="list-disc pl-5 space-y-1">
+                <li><strong>Margin > 50,000 GP:</strong> Items with lower margins aren't worth the time</li>
+                <li><strong>Traded in last hour:</strong> Ensures the prices are current and the item is actively traded</li>
+              </ul>
+              <p>This helps you focus on items that can actually make you money.</p>
+            </div>
           </details>
-          <details class="panel">
-            <summary class="text-lg font-semibold text-white">Privacy and data handling</summary>
-            <p class="mt-3 text-secondary">
-              All small font processing is client-side only. No data is sent to servers or stored. Your sample text stays in the browser memory and is cleared on page unload. We do not use cookies or tracking for the tool. For full details, see our Privacy Policy.
-            </p>
+
+          <details class="osrs-card p-6">
+            <summary class="text-lg font-semibold osrs-gold-text">How often is the data updated?</summary>
+            <div class="text-gray-400 space-y-2">
+              <p>The tracker automatically refreshes every 5 minutes. You can also click the "Refresh" button to manually update at any time.</p>
+              <p>The data comes from the official RuneScape Wiki API, which tracks real Grand Exchange transactions in near real-time.</p>
+            </div>
+          </details>
+
+          <details class="osrs-card p-6">
+            <summary class="text-lg font-semibold osrs-gold-text">Is this tracker safe and legit?</summary>
+            <div class="text-gray-400 space-y-2">
+              <p><strong class="text-green-400">Yes, absolutely!</strong> Here's why:</p>
+              <ul class="list-disc pl-5 space-y-1">
+                <li>We only use official, publicly available data from the RuneScape Wiki API</li>
+                <li>No login or personal information required</li>
+                <li>All processing happens in your browser - we don't store anything</li>
+                <li>We don't require any game account access or credentials</li>
+              </ul>
+            </div>
           </details>
         </div>
-        <p class="text-center text-sm text-secondary">Still have questions? Join our Discord for community support or contact us via Telegram.</p>
+
+        <div class="osrs-card p-6 text-center">
+          <h2 class="text-lg font-semibold osrs-gold-text mb-3">Still have questions?</h2>
+          <p class="text-gray-400 mb-4">Join our community or contact us directly:</p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="https://t.me/tangjei" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-400 transition">
+              💬 Telegram
+            </a>
+            <a href="mailto:tangjei414@gmail.com" class="inline-flex items-center gap-2 px-4 py-2 bg-amber-600 text-black font-semibold rounded-lg hover:bg-amber-500 transition">
+              📧 Email
+            </a>
+          </div>
+        </div>
       </section>
     </main>
     {{ renderFooterSecondary(footer) }}

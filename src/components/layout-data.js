@@ -18,7 +18,7 @@ export const layoutData = {
         home: [
           { label: "Swap Rates", href: "#swap-rates" },
           { label: "Profit Board", href: "#profit-board" },
-          { label: "Info", href: "#info" },
+          { label: "FAQ", href: "#faq" },
           { label: "Help", href: "/en/help/" }
         ],
         secondary: [
@@ -119,7 +119,7 @@ export const layoutData = {
         home: [
           { label: "Vaihtokurssit", href: "#swap-rates" },
           { label: "Voittolista", href: "#profit-board" },
-          { label: "Tietoa", href: "#info" },
+          { label: "UKK", href: "#faq" },
           { label: "Ohje", href: "/fi/help/" }
         ],
         secondary: [
@@ -220,7 +220,7 @@ export const layoutData = {
         home: [
           { label: "Växelkurser", href: "#swap-rates" },
           { label: "Vinstlista", href: "#profit-board" },
-          { label: "Info", href: "#info" },
+          { label: "FAQ", href: "#faq" },
           { label: "Hjälp", href: "/sv/help/" }
         ],
         secondary: [
@@ -321,7 +321,7 @@ export const layoutData = {
         home: [
           { label: "Vekslingskurser", href: "#swap-rates" },
           { label: "Profittliste", href: "#profit-board" },
-          { label: "Info", href: "#info" },
+          { label: "FAQ", href: "#faq" },
           { label: "Hjelp", href: "/no/help/" }
         ],
         secondary: [
