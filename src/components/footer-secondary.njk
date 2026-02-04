@@ -11,7 +11,7 @@
       <h3 class="eyebrow text-fog/60">{{ config.navigation.title }}</h3>
       <ul class="mt-5 space-y-2 text-sm text-fog/70">
         {% for link in config.navigation.links %}
-        <li><a href="{{ link.href }}" class="transition hover:text-fog">{{ link.label }}</a></li>
+        <li><a href="{{ link.href }}" class="transition hover:text-fog" title="{{ link.label }}">{{ link.label }}</a></li>
         {% endfor %}
       </ul>
     </div>
@@ -19,7 +19,7 @@
       <h3 class="eyebrow text-fog/60">{{ config.legal.title }}</h3>
       <ul class="mt-5 space-y-2 text-sm text-fog/70">
         {% for link in config.legal.links %}
-        <li><a href="{{ link.href }}" class="transition hover:text-fog">{{ link.label }}</a></li>
+        <li><a href="{{ link.href }}" class="transition hover:text-fog" title="{{ link.label }}">{{ link.label }}</a></li>
         {% endfor %}
       </ul>
     </div>
@@ -27,7 +27,7 @@
       <h3 class="eyebrow text-fog/60">{{ config.languages.title }}</h3>
       <ul class="mt-5 space-y-2 text-sm text-fog/70">
         {% for lang in config.languages.items %}
-        <li><a href="{{ lang.href }}" class="transition hover:text-fog">{{ lang.label }}</a></li>
+        <li><a href="{{ lang.href }}" class="transition hover:text-fog" title="{{ lang.label }}">{{ lang.label }}</a></li>
         {% endfor %}
       </ul>
     </div>

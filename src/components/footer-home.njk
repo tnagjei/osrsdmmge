@@ -12,7 +12,7 @@
       <h3 class="eyebrow text-fog/60">{{ column.title }}</h3>
       <ul class="mt-5 space-y-2 text-sm text-fog/70">
         {% for link in column.links %}
-        <li><a href="{{ link.href }}" class="transition hover:text-fog">{{ link.label }}</a></li>
+        <li><a href="{{ link.href }}" class="transition hover:text-fog" title="{{ link.label }}">{{ link.label }}</a></li>
         {% endfor %}
       </ul>
     </div>
