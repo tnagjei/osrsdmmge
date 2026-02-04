@@ -34,7 +34,7 @@ export const layoutData = {
           brand: {
             title: "OSRS DMM Tracker",
             lines: [
-              { shade: "70", content: "© 2025 tangjei414. Real-time Deadman Mode gold prices and profit tracking." },
+              { shade: "70", content: "© 2026 osrsdmmge. Real-time OSRS DMM GE gold prices and profit tracking." },
               { shade: "60", content: "Contact: <a href=\"mailto:tangjei414@gmail.com\" class=\"text-accent\">tangjei414@gmail.com</a>" },
               { shade: "60", content: "Telegram: <a href=\"https://t.me/tangjei\" class=\"text-accent\">@tangjei</a>" }
             ]
@@ -66,7 +66,7 @@ export const layoutData = {
               ]
             }
           ],
-          bottomNote: "Track OSRS Deadman Mode gold prices in real-time."
+          bottomNote: "Track OSRS DMM GE gold prices in real-time with osrsdmmge."
         },
         secondary: {
           brand: {
