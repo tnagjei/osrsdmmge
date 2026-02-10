@@ -222,35 +222,34 @@
           </div>
 
           <!-- Right: Rate Display -->
-          <div class="flex flex-col items-center lg:items-end gap-4">
-            <!-- Main Rate Badge -->
-            <div style="background: linear-gradient(135deg, #b8860b 0%, #ffc107 40%, #ff9800 100%); padding: 16px 32px; border-radius: 12px; box-shadow: 0 8px 32px rgba(255, 193, 7, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);">
-              <div style="font-size: 2rem; font-weight: 800; color: #000; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3); letter-spacing: -0.02em;">
-                1M DMM <span style="opacity: 0.7;">=</span> 55M OSRS
-              </div>
-            </div>
+	          <div class="flex flex-col items-center lg:items-end gap-4">
+	            <!-- Main Rate Badge -->
+	            <div style="background: linear-gradient(135deg, #b8860b 0%, #ffc107 40%, #ff9800 100%); padding: 16px 32px; border-radius: 12px; box-shadow: 0 8px 32px rgba(255, 193, 7, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);">
+	              <div style="font-size: 2rem; font-weight: 800; color: #000; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3); letter-spacing: -0.02em;">
+	                1M DMM <span style="opacity: 0.7;">=</span> 5M OSRS
+	              </div>
+	            </div>
 
-            <!-- Status Badges Row -->
-            <div class="flex flex-wrap justify-center lg:justify-end gap-3">
-              <span class="info-badge" style="background: rgba(76, 175, 80, 0.15); border: 1px solid rgba(76, 175, 80, 0.3);">
-                <span class="pulse-dot"></span>
-                <span style="color: #4caf50;">Live Rate</span>
-              </span>
-              <span class="info-badge" style="background: rgba(255, 193, 7, 0.1); border: 1px solid rgba(255, 193, 7, 0.3);">
-                <svg style="width: 14px; height: 14px;" fill="#ffc107" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-                </svg>
-                <span style="color: #ffc107;">Source: Discord</span>
-              </span>
-            </div>
+	            <!-- Status Badges Row -->
+	            <div class="flex flex-wrap justify-center lg:justify-end gap-3">
+	              <span class="info-badge" style="background: rgba(255, 193, 7, 0.1); border: 1px solid rgba(255, 193, 7, 0.3);">
+	                <span style="color: #ffc107;">Estimated Rate</span>
+	              </span>
+	              <span class="info-badge" style="background: rgba(255, 193, 7, 0.1); border: 1px solid rgba(255, 193, 7, 0.3);">
+	                <svg style="width: 14px; height: 14px;" fill="#ffc107" viewBox="0 0 24 24">
+	                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+	                </svg>
+	                <span style="color: #ffc107;">Source: Manual estimate</span>
+	              </span>
+	            </div>
 
-            <!-- Last Updated -->
-            <p class="text-gray-500 text-xs" id="last-updated">
-              Last updated: Loading...
-            </p>
-          </div>
-        </div>
-      </section>
+	            <!-- Last Updated -->
+	            <p class="text-gray-500 text-xs" id="last-updated">
+	              Prices updated: Loading...
+	            </p>
+	          </div>
+	        </div>
+	      </section>
 
       <!-- Profit Leaderboard Section -->
       <section id="profit-board" class="osrs-card p-6 md:p-8">
@@ -624,10 +623,10 @@
       }
 
       // Update last updated timestamp
-      function updateTimestamp() {
-        const now = new Date();
-        lastUpdated.textContent = `Last updated: ${now.toLocaleTimeString()}`;
-      }
+	      function updateTimestamp() {
+	        const now = new Date();
+	        lastUpdated.textContent = `Prices updated: ${now.toLocaleTimeString()}`;
+	      }
 
       // Render loading state
       function showLoading() {

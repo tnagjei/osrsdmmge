@@ -1,6 +1,7 @@
 # Build directories
 /public/*
 !/public/_headers
+!/public/_redirects
 !/public/assets/
 !/public/assets/**
 !/public/sitemap.xml
@@ -45,6 +46,9 @@ CODEX.md
 docs/site-architecture.md
 AGENTS.md
 docs/fix-plan.md
+task_plan.md
+findings.md
+progress.md
 
 # Hosting configs
 .wrangler/

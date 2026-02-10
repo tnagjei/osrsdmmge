@@ -1,7 +1,10 @@
+// input: n/a (static navigation/footer/i18n config)
+// output: layoutData consumed by Nunjucks templates + build scripts
+// pos: src/components/layout-data.js (update rule: routes/locales change -> update this file + scripts/build-pages.mjs + src/static-root/sitemap.xml)
 export const layoutData = {
   defaultLocale: "en",
   languages: [
-    { code: "en", label: "English", href: "/en/", isDefault: true },
+    { code: "en", label: "English", href: "/", isDefault: true },
     { code: "fi", label: "Suomi", href: "/fi/" },
     { code: "sv", label: "Svenska", href: "/sv/" },
     { code: "no", label: "Norsk", href: "/no/" }
@@ -19,14 +22,14 @@ export const layoutData = {
           { label: "Swap Rates", href: "#swap-rates" },
           { label: "Profit Board", href: "#profit-board" },
           { label: "FAQ", href: "#faq" },
-          { label: "Help", href: "/en/help/" }
+          { label: "Help", href: "/help/" }
         ],
         secondary: [
-          { label: "Home", href: "/en/" },
-          { label: "Help", href: "/en/help/" },
-          { label: "About", href: "/en/about/" },
-          { label: "Privacy", href: "/en/privacy/" },
-          { label: "Terms", href: "/en/terms/" }
+          { label: "Home", href: "/" },
+          { label: "Help", href: "/help/" },
+          { label: "About", href: "/about/" },
+          { label: "Privacy", href: "/privacy/" },
+          { label: "Terms", href: "/terms/" }
         ]
       },
       footer: {
@@ -45,21 +48,21 @@ export const layoutData = {
               links: [
                 { label: "Swap Rates", href: "#swap-rates" },
                 { label: "Profit Board", href: "#profit-board" },
-                { label: "Blog", href: "/en/blog/" }
+                { label: "Blog", href: "/blog/" }
               ]
             },
             {
               title: "Support",
               links: [
-                { label: "Help Center", href: "/en/help/" },
-                { label: "Privacy Policy", href: "/en/privacy/" },
-                { label: "User Agreement", href: "/en/terms/" }
+                { label: "Help Center", href: "/help/" },
+                { label: "Privacy Policy", href: "/privacy/" },
+                { label: "User Agreement", href: "/terms/" }
               ]
             },
             {
               title: "Languages",
               links: [
-                { label: "English", href: "/en/" },
+                { label: "English", href: "/" },
                 { label: "Suomi", href: "/fi/" },
                 { label: "Svenska", href: "/sv/" },
                 { label: "Norsk", href: "/no/" }
@@ -80,22 +83,22 @@ export const layoutData = {
           navigation: {
             title: "Navigation",
             links: [
-              { label: "Home", href: "/en/" },
-              { label: "Help", href: "/en/help/" },
-              { label: "About", href: "/en/about/" }
+              { label: "Home", href: "/" },
+              { label: "Help", href: "/help/" },
+              { label: "About", href: "/about/" }
             ]
           },
           legal: {
             title: "Legal",
             links: [
-              { label: "Privacy", href: "/en/privacy/" },
-              { label: "Terms", href: "/en/terms/" }
+              { label: "Privacy", href: "/privacy/" },
+              { label: "Terms", href: "/terms/" }
             ]
           },
           languages: {
             title: "Languages",
             items: [
-              { label: "English", href: "/en/" },
+              { label: "English", href: "/" },
               { label: "Suomi", href: "/fi/" },
               { label: "Svenska", href: "/sv/" },
               { label: "Norsk", href: "/no/" }
@@ -160,7 +163,7 @@ export const layoutData = {
             {
               title: "Kielet",
               links: [
-                { label: "English", href: "/en/" },
+                { label: "English", href: "/" },
                 { label: "Suomi", href: "/fi/" },
                 { label: "Svenska", href: "/sv/" },
                 { label: "Norsk", href: "/no/" }
@@ -196,7 +199,7 @@ export const layoutData = {
           languages: {
             title: "Kielet",
             items: [
-              { label: "English", href: "/en/" },
+              { label: "English", href: "/" },
               { label: "Suomi", href: "/fi/" },
               { label: "Svenska", href: "/sv/" },
               { label: "Norsk", href: "/no/" }
@@ -261,7 +264,7 @@ export const layoutData = {
             {
               title: "Språk",
               links: [
-                { label: "English", href: "/en/" },
+                { label: "English", href: "/" },
                 { label: "Suomi", href: "/fi/" },
                 { label: "Svenska", href: "/sv/" },
                 { label: "Norsk", href: "/no/" }
@@ -297,7 +300,7 @@ export const layoutData = {
           languages: {
             title: "Språk",
             items: [
-              { label: "English", href: "/en/" },
+              { label: "English", href: "/" },
               { label: "Suomi", href: "/fi/" },
               { label: "Svenska", href: "/sv/" },
               { label: "Norsk", href: "/no/" }
@@ -362,7 +365,7 @@ export const layoutData = {
             {
               title: "Språk",
               links: [
-                { label: "English", href: "/en/" },
+                { label: "English", href: "/" },
                 { label: "Suomi", href: "/fi/" },
                 { label: "Svenska", href: "/sv/" },
                 { label: "Norsk", href: "/no/" }
@@ -398,7 +401,7 @@ export const layoutData = {
           languages: {
             title: "Språk",
             items: [
-              { label: "English", href: "/en/" },
+              { label: "English", href: "/" },
               { label: "Suomi", href: "/fi/" },
               { label: "Svenska", href: "/sv/" },
               { label: "Norsk", href: "/no/" }

@@ -1,3 +1,6 @@
+// input: src/pages/**/*.njk + src/components + src/components/layout-data.js
+// output: src/generated/**/*.html (including root-level canonical English aliases)
+// pos: scripts/build-pages.mjs (update rule: route/SEO changes -> update alias logic here + vite.config.js rollup input)
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import fg from 'fast-glob';
@@ -22,7 +25,7 @@ function computeHeaderConfig(locale, isHome) {
   }
   const navKey = isHome ? 'home' : 'secondary';
   return {
-    homeHref: `/${locale}/`,
+    homeHref: locale === layoutData.defaultLocale ? '/' : `/${locale}/`,
     navItems: localeConfig.nav[navKey],
     cta: localeConfig.cta
   };
@@ -87,6 +90,14 @@ async function buildPages() {
 
     let output = rendered.replace(/<(meta|link|input|img)([^>]*)\s*\/>/gi, '<$1$2>');
 
+    // Inject 'noindex' for non-English pages to prevent duplicate content indexing
+    if (locale !== layoutData.defaultLocale) {
+      output = output.replace(
+        '</head>',
+        '<meta name="robots" content="noindex" />\n</head>'
+      );
+    }
+
     // Inject Yandex verification meta, Google AdSense script, and Microsoft Clarity script into <head>
     output = output.replace(
       '</head>',
@@ -123,6 +134,35 @@ async function buildPages() {
     console.log(`Copied ${defaultLocale}/index.html to root index.html for default locale landing.`);
   } catch (error) {
     console.warn(`Unable to copy default locale home to root: ${error.message}`);
+  }
+
+  // Create root-level aliases for default locale sub-pages (canonical English URLs).
+  const defaultRoutes = ['about', 'blog', 'help', 'privacy', 'terms'];
+  for (const route of defaultRoutes) {
+    const src = path.join(outputDir, defaultLocale, route, 'index.html');
+    const dest = path.join(outputDir, route, 'index.html');
+    try {
+      await fs.mkdir(path.dirname(dest), { recursive: true });
+      await fs.copyFile(src, dest);
+      console.log(`Copied ${defaultLocale}/${route}/index.html to root ${route}/index.html.`);
+    } catch (error) {
+      console.warn(`Unable to copy default locale route "${route}" to root: ${error.message}`);
+    }
+  }
+
+  // Create root-level aliases for default locale blog posts: /blog/<slug>/ (canonical English URLs).
+  const defaultLocaleDir = path.join(outputDir, defaultLocale);
+  const blogPostRelPaths = await fg('blog/*/index.html', { cwd: defaultLocaleDir });
+  for (const relPath of blogPostRelPaths) {
+    const src = path.join(defaultLocaleDir, relPath);
+    const dest = path.join(outputDir, relPath);
+    try {
+      await fs.mkdir(path.dirname(dest), { recursive: true });
+      await fs.copyFile(src, dest);
+      console.log(`Copied ${defaultLocale}/${relPath} to root ${relPath}.`);
+    } catch (error) {
+      console.warn(`Unable to copy default locale blog post "${relPath}" to root: ${error.message}`);
+    }
   }
 }
 

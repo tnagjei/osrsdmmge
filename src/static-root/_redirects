@@ -1,0 +1,6 @@
+# Redirect /en/* to root to enforce canonical English URLs (no /en/ prefix).
+# Update rule: if routes change, update this file AND sitemap.xml AND canonical/hreflang tags.
+
+/en / 301
+/en/ / 301
+/en/* /:splat 301

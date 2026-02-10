@@ -1,0 +1,23 @@
+# Default: cache HTML for a short time to keep updates responsive.
+# Update rule: if caching strategy changes, update this file AND verify-deployment.mjs expectations.
+
+/*
+  Cache-Control: public, max-age=300
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/assets/*
+  Cache-Control: public, max-age=86400
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+
+/robots.txt
+  Cache-Control: public, max-age=3600
+
+/llms.txt
+  Cache-Control: public, max-age=3600
+
+/ads.txt
+  Cache-Control: public, max-age=3600
